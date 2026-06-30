@@ -12,6 +12,7 @@ ENROLL_INFO_URL = "" \
 FREQUENCY = 60
 SEATS_AVAILABLE = "Enrollment Seats Available:"
 CLASSES = [10061, 10473]
+FALL2026 = 202710
 
 def crn_converter(term: int, crns: list[int]) -> list[str]:
     """find the name for the CRN"""
@@ -64,8 +65,8 @@ def notifier(term: int, crns: list[int], names_classes: list[str]) -> None:
                 f'NO SEATS AVAILABLE. {names_classes[i]} has {enroll_info_dict[SEATS_AVAILABLE]} seat(s).'},
                 timeout=5)
 
-names = crn_converter(202710, CLASSES)
+names = crn_converter(FALL2026, CLASSES)
 
 while True:
-    notifier(202710, CLASSES, names)
+    notifier(FALL2026, CLASSES, names)
     time.sleep(FREQUENCY)
